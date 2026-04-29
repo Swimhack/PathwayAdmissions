@@ -1,0 +1,10 @@
+{
+  "name": "pathway-admissions-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static redesign prototype for Pathway Admissions.",
+  "scripts": {
+    "test": "node tests/site.test.js"
+  }
+}
+

@@ -1,0 +1,18 @@
+# Private project/business documents
+contract_pathwayadmissions.docx
+contract_pathwayadmissions.pdf
+invoice_PA_04292026.doc
+invoice_PA_04292026.pdf
+pathway_admissions_one_pager.pdf
+
+# Local/editor/system files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Dependencies/build output if added later
+node_modules/
+dist/
+build/
+

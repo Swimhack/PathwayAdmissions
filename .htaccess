@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Preserve legacy Weebly URLs after migration.
+Redirect 301 /middlehigh-school-admissions.html /middle-high-school-admissions.html
+Redirect 301 /careers--majors-packages.html /careers-majors.html
+Redirect 301 /who-we-are.html /team.html
+Redirect 301 /our-results.html /results.html
+Redirect 301 /alexandra-wax.html /team.html
+Redirect 301 /penny-linsenmayer.html /team.html
+Redirect 301 /ourservices.html /college-admissions.html
+Redirect 301 /new-page.html /careers-majors.html
+
