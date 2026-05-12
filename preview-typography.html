@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pathway Admissions — Typography Variants Preview</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Override fonts per variant block */
+    :root { --pa-navy: #142949; --pa-blue: #2563eb; --pa-green: #0d7a6a; --pa-gold: #c8922a; --pa-muted: #526173; }
+
+    body { margin: 0; background: #f8f9fc; }
+
+    .variant-label {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: var(--pa-navy);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 9999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .variant-label span { color: #93c5fd; }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--pa-navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    nav a:hover { background: #f1f5f9; }
+    nav a.active { background: var(--pa-navy); color: #fff; }
+
+    .variant-blocks { display: flex; flex-direction: column; gap: 0; }
+
+    .variant-section {
+      min-height: 100vh;
+      padding: 80px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .variant-section:nth-child(1) { background: #ffffff; }
+    .variant-section:nth-child(2) { background: #f0fdf4; }
+    .variant-section:nth-child(3) { background: #faf5ff; }
+    .variant-section:nth-child(4) { background: #fff7ed; }
+
+    .variant-inner {
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .variant-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    .variant-section:nth-child(1) .variant-badge { background: #e0e7ff; color: #3730a3; }
+    .variant-section:nth-child(2) .variant-badge { background: #dcfce7; color: #166534; }
+    .variant-section:nth-child(3) .variant-badge { background: #f3e8ff; color: #6b21a8; }
+    .variant-section:nth-child(4) .variant-badge { background: #ffedd5; color: #9a3412; }
+
+    .variant-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    .variant-fonts {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 32px;
+    }
+
+    /* ── VARIANT A: Karla + Oswald (current/original) ── */
+    .variant-a { font-family: "Karla", system-ui, sans-serif; }
+    .variant-a h1 { font-family: "Oswald", sans-serif; font-size: clamp(38px,5vw,64px); font-weight: 700; color: var(--pa-navy); margin: 0 0 16px; line-height: 1.1; }
+    .variant-a h2 { font-family: "Oswald", sans-serif; font-size: clamp(28px,3vw,40px); font-weight: 700; color: var(--pa-navy); margin: 0 0 24px; }
+    .variant-a h3 { font-size: 22px; font-weight: 700; color: var(--pa-navy); margin: 0 0 8px; }
+    .variant-a .lead { font-size: 19px; color: #4e5d73; font-weight: 500; line-height: 1.6; margin: 0 0 20px; }
+    .variant-a p { font-size: 15px; color: #526173; line-height: 1.7; }
+    .variant-a .card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .variant-a .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .variant-a .card p { font-size: 14px; }
+    .variant-a .btnPrimary {
+      display: inline-block; background: var(--pa-blue); color: #fff;
+      padding: 12px 24px; border-radius: 999px; font-weight: 800; font-size: 15px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .variant-a .btnPrimary:hover { background: #1d4ed8; }
+
+    /* ── VARIANT B: DM Sans + Fraunces (softer/warmer) ── */
+    .variant-b { font-family: "DM Sans", system-ui, sans-serif; }
+    .variant-b h1 { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,64px); font-weight: 600; color: var(--pa-navy); margin: 0 0 16px; line-height: 1.15; font-style: italic; }
+    .variant-b h2 { font-family: "Fraunces", serif; font-size: clamp(28px,3vw,40px); font-weight: 600; color: var(--pa-navy); margin: 0 0 24px; }
+    .variant-b h3 { font-size: 20px; font-weight: 600; color: var(--pa-navy); margin: 0 0 8px; }
+    .variant-b .lead { font-size: 19px; color: #4e5d73; font-weight: 400; line-height: 1.7; margin: 0 0 20px; font-style: italic; }
+    .variant-b p { font-size: 15px; color: #526173; line-height: 1.75; }
+    .variant-b .card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .variant-b .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .variant-b .card p { font-size: 14px; }
+    .variant-b .btnPrimary {
+      display: inline-block; background: var(--pa-green); color: #fff;
+      padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 15px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .variant-b .btnPrimary:hover { background: #0d5c52; }
+
+    /* ── VARIANT C: Crimson Pro + Outfit (editorial/literary) ── */
+    .variant-c { font-family: "Crimson Pro", Georgia, serif; }
+    .variant-c h1 { font-family: "Outfit", sans-serif; font-size: clamp(38px,5vw,64px); font-weight: 700; color: var(--pa-navy); margin: 0 0 16px; line-height: 1.1; }
+    .variant-c h2 { font-family: "Outfit", sans-serif; font-size: clamp(28px,3vw,40px); font-weight: 700; color: var(--pa-navy); margin: 0 0 24px; }
+    .variant-c h3 { font-size: 22px; font-weight: 600; color: var(--pa-navy); margin: 0 0 8px; }
+    .variant-c .lead { font-size: 20px; color: #4e5d73; font-weight: 400; line-height: 1.65; margin: 0 0 20px; }
+    .variant-c p { font-size: 15px; color: #526173; line-height: 1.8; }
+    .variant-c .card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .variant-c .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .variant-c .card p { font-size: 14px; }
+    .variant-c .btnPrimary {
+      display: inline-block; background: var(--pa-navy); color: #fff;
+      padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .variant-c .btnPrimary:hover { background: #0f1f38; }
+
+    /* ── VARIANT D: Libre Baskerville + Jost (premium/classic) ── */
+    .variant-d { font-family: "Jost", system-ui, sans-serif; }
+    .variant-d h1 { font-family: "Libre Baskerville", Georgia, serif; font-size: clamp(38px,5vw,64px); font-weight: 400; color: var(--pa-navy); margin: 0 0 16px; line-height: 1.2; }
+    .variant-d h2 { font-family: "Libre Baskerville", Georgia, serif; font-size: clamp(28px,3vw,40px); font-weight: 400; color: var(--pa-navy); margin: 0 0 24px; }
+    .variant-d h3 { font-size: 22px; font-weight: 700; color: var(--pa-navy); margin: 0 0 8px; }
+    .variant-d .lead { font-size: 19px; color: #4e5d73; font-weight: 400; line-height: 1.7; margin: 0 0 20px; }
+    .variant-d p { font-size: 15px; color: #526173; line-height: 1.75; }
+    .variant-d .card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .variant-d .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .variant-d .card p { font-size: 14px; }
+    .variant-d .btnPrimary {
+      display: inline-block; background: var(--pa-gold); color: #fff;
+      padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .variant-d .btnPrimary:hover { background: #a67520; }
+
+    .chip {
+      display: inline-block;
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pa-navy);
+    }
+
+    .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 32px; }
+    .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 32px; }
+    .section-divider { border: none; border-top: 1px solid #e2e8f0; margin: 40px 0; }
+
+    .variant-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--pa-navy);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      display: flex;
+      gap: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      z-index: 9999;
+    }
+
+    .variant-nav a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: all 0.15s;
+    }
+
+    .variant-nav a:hover,
+    .variant-nav a.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="variant-label">👁 Live Preview — <span>scroll to compare</span></div>
+
+<!-- Nav -->
+<nav>
+  <a href="#variantA">Variant A</a>
+  <a href="#variantB">Variant B</a>
+  <a href="#variantC">Variant C</a>
+  <a href="#variantD">Variant D</a>
+</nav>
+
+<div class="variant-blocks">
+
+  <!-- ═══ VARIANT A ═══ -->
+  <section class="variant-section variant-a" id="variantA">
+    <div class="variant-inner">
+      <span class="variant-badge">A — Current / Original</span>
+      <div class="variant-name">Karla + Oswald</div>
+      <div class="variant-fonts">Google Fonts: Karla (body) + Oswald (headings)</div>
+
+      <h1>Find the right school, tell your story well, and make confident decisions.</h1>
+      <p class="lead">Every student is unique, so every admissions process should be too. We help families navigate college admissions, testing, affordability, and career direction with a thoughtful, individualized approach.</p>
+
+      <a class="btnPrimary" href="#">Start the conversation →</a>
+
+      <div class="grid3" style="margin-top: 40px;">
+        <div class="card">
+          <h3>College Admissions</h3>
+          <p>School list strategy, essays, applications, and decision support—custom to the student.</p>
+        </div>
+        <div class="card">
+          <h3>Middle/High School</h3>
+          <p>Admissions advising, interview prep, and test prep to set a strong foundation early.</p>
+        </div>
+        <div class="card">
+          <h3>Test Preparation</h3>
+          <p>Strategy-based tutoring across the SAT, ACT, SSAT/ISEE, and more.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Merit Scholarships</h3>
+          <p>Recent class outcomes include <strong>$15M+</strong> in merit-based scholarships.</p>
+        </div>
+        <div class="card" style="background: var(--pa-navy);">
+          <h3 style="color:#fff">A quote or testimonial</h3>
+          <p style="color:rgba(255,255,255,0.8)">"Pathway gave us clarity and confidence when we needed it most."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARIANT B ═══ -->
+  <section class="variant-section variant-b" id="variantB">
+    <div class="variant-inner">
+      <span class="variant-badge">B — Softer / Warmer ★ Recommended</span>
+      <div class="variant-name">DM Sans + Fraunces</div>
+      <div class="variant-fonts">Google Fonts: DM Sans (body) + Fraunces (headings, italic)</div>
+
+      <h1>Find the right school, tell your story well, and make confident decisions.</h1>
+      <p class="lead">Every student is unique, so every admissions process should be too. We help families navigate college admissions, testing, affordability, and career direction with a thoughtful, individualized approach.</p>
+
+      <a class="btnPrimary" href="#">Start the conversation →</a>
+
+      <div class="grid3" style="margin-top: 40px;">
+        <div class="card">
+          <h3>College Admissions</h3>
+          <p>School list strategy, essays, applications, and decision support—custom to the student.</p>
+        </div>
+        <div class="card">
+          <h3>Middle/High School</h3>
+          <p>Admissions advising, interview prep, and test prep to set a strong foundation early.</p>
+        </div>
+        <div class="card">
+          <h3>Test Preparation</h3>
+          <p>Strategy-based tutoring across the SAT, ACT, SSAT/ISEE, and more.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Merit Scholarships</h3>
+          <p>Recent class outcomes include <strong>$15M+</strong> in merit-based scholarships.</p>
+        </div>
+        <div class="card" style="background: var(--pa-green);">
+          <h3 style="color:#fff">A quote or testimonial</h3>
+          <p style="color:rgba(255,255,255,0.85)">"Pathway gave us clarity and confidence when we needed it most."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARIANT C ═══ -->
+  <section class="variant-section variant-c" id="variantC">
+    <div class="variant-inner">
+      <span class="variant-badge">C — Editorial / Literary</span>
+      <div class="variant-name">Crimson Pro + Outfit</div>
+      <div class="variant-fonts">Google Fonts: Crimson Pro (body/serif) + Outfit (headings)</div>
+
+      <h1>Find the right school, tell your story well, and make confident decisions.</h1>
+      <p class="lead">Every student is unique, so every admissions process should be too. We help families navigate college admissions, testing, affordability, and career direction with a thoughtful, individualized approach.</p>
+
+      <a class="btnPrimary" href="#">Start the conversation →</a>
+
+      <div class="grid3" style="margin-top: 40px;">
+        <div class="card">
+          <h3>College Admissions</h3>
+          <p>School list strategy, essays, applications, and decision support—custom to the student.</p>
+        </div>
+        <div class="card">
+          <h3>Middle/High School</h3>
+          <p>Admissions advising, interview prep, and test prep to set a strong foundation early.</p>
+        </div>
+        <div class="card">
+          <h3>Test Preparation</h3>
+          <p>Strategy-based tutoring across the SAT, ACT, SSAT/ISEE, and more.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Merit Scholarships</h3>
+          <p>Recent class outcomes include <strong>$15M+</strong> in merit-based scholarships.</p>
+        </div>
+        <div class="card" style="background: var(--pa-navy);">
+          <h3 style="color:#fff">A quote or testimonial</h3>
+          <p style="color:rgba(255,255,255,0.8)">"Pathway gave us clarity and confidence when we needed it most."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARIANT D ═══ -->
+  <section class="variant-section variant-d" id="variantD">
+    <div class="variant-inner">
+      <span class="variant-badge">D — Premium / Classic</span>
+      <div class="variant-name">Libre Baskerville + Jost</div>
+      <div class="variant-fonts">Google Fonts: Libre Baskerville (headings/body) + Jost (UI labels)</div>
+
+      <h1>Find the right school, tell your story well, and make confident decisions.</h1>
+      <p class="lead">Every student is unique, so every admissions process should be too. We help families navigate college admissions, testing, affordability, and career direction with a thoughtful, individualized approach.</p>
+
+      <a class="btnPrimary" href="#">Start the conversation →</a>
+
+      <div class="grid3" style="margin-top: 40px;">
+        <div class="card">
+          <h3>College Admissions</h3>
+          <p>School list strategy, essays, applications, and decision support—custom to the student.</p>
+        </div>
+        <div class="card">
+          <h3>Middle/High School</h3>
+          <p>Admissions advising, interview prep, and test prep to set a strong foundation early.</p>
+        </div>
+        <div class="card">
+          <h3>Test Preparation</h3>
+          <p>Strategy-based tutoring across the SAT, ACT, SSAT/ISEE, and more.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Merit Scholarships</h3>
+          <p>Recent class outcomes include <strong>$15M+</strong> in merit-based scholarships.</p>
+        </div>
+        <div class="card" style="background: var(--pa-gold);">
+          <h3 style="color:#fff">A quote or testimonial</h3>
+          <p style="color:rgba(255,255,255,0.9)">"Pathway gave us clarity and confidence when we needed it most."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Sticky nav -->
+<div class="variant-nav">
+  <a href="#variantA">A — Karla+Oswald</a>
+  <a href="#variantB">B — DM Sans+Fraunces</a>
+  <a href="#variantC">C — Crimson+Outfit</a>
+  <a href="#variantD">D — Libre+Jost</a>
+</div>
+
+</body>
+</html>
